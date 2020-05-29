@@ -100,14 +100,8 @@ let getUser = (req, callback) => {
             // res = JSON.parse(JSON.stringify(res));
             // if (res == 0) {
             if (req.Email == res.Email && req.Password == res.Password) {
-                baseDao.save(User, req, (error, response) => {
-                    if (error) {
-                        callback(null, error);
-                    } else {
-                        logger.info("Return success response", { "sucess": true })
-                        callback(response, null);
-                    }
-                });
+                req.Token = token.generateToken(req.Email)
+                callback(req);
             }
         }
     });
