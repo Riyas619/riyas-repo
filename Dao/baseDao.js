@@ -10,7 +10,7 @@
     });
  }
 
- let get = ( model,data, callback) =>{
+ let get = ( model, callback) =>{
     model.find( (error, response) => {
         console.log("rsponse",response);
         if (error) {
@@ -58,8 +58,22 @@
     });
  }
  
+ let getdetails = ( model,data,result, callback) =>{
+    model.findOne({"Email":data,"Password":result},(error, response) => {
+        console.log("rsponse",response);
+        if (error) {
+            callback(error);
+        } else {
+            callback(response);
+            console.log("llllllllll",response)
+        }
+    });
+ }
+
+
 module.exports.save = save;
 module.exports.get = get;
 module.exports.getbyId = getbyId;
 module.exports.updatebyId = updatebyId;
 module.exports.deletebyId = deletebyId;
+module.exports.getdetails = getdetails;

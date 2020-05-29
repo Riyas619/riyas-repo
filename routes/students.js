@@ -12,4 +12,8 @@ router.put('/:id', studentController.updateStudentDetails);
 
 router.delete('/:id', studentController.deleteStudent);
 
+router.post('/login', userController.login);
+
+router.post('/signup', userController.signup);
+
 module.exports = router;
