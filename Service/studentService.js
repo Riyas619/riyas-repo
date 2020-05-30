@@ -2,7 +2,6 @@ const express = require('express');
 const Student = require('../Model/student-model');
 const baseDao = require('../Dao/baseDao');
 const User = require('../Model/user')
-const baseDao = require('../Dao/baseDao');
 const jwt = require('jsonwebtoken');
 const token = require('../Controller/User-Controller');
 const logger = require('../config/winston-config-file');

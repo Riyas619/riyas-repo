@@ -1,0 +1,401 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "StudentCrud",
+      "description": "swagger api"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "paths": {
+      "/students/login": {
+        "post": {
+          "summary": "login",
+          "description": "",
+          "tags": [
+            "Student"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "Email": {
+                      "type": "string"
+                    },
+                    "Password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/students/signup": {
+        "post": {
+          "summary": "signup",
+          "description": "",
+          "tags": [
+            "StudentSignup"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "user_Id": {
+                      "type": "number"
+                    },
+                    "StudentName": {
+                      "type": "string"
+                    },
+                    "StudentDept": {
+                      "type": "string"
+                    },
+                    "Email": {
+                      "type": "string"
+                    },
+                    "Password": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/students": {
+        "post": {
+          "summary": "Create Students Details",
+          "description": "",
+          "tags": [
+            "CreateStudent"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "user_Id": {
+                      "type": "number"
+                    },
+                    "StudentName": {
+                      "type": "string"
+                    },
+                    "StudentRegno": {
+                      "type": "number"
+                    },
+                    "StudentDept": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        },
+        "get": {
+          "summary": "Get Student",
+          "description": "",
+          "tags": [
+            "GetStudent"
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      },
+      "/students/{id}": {
+        "get": {
+          "summary": "Get Student Details by Id",
+          "description": "",
+          "tags": [
+            "GetStudentById"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {},
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        },
+        "put": {
+          "summary": "Update Student Details",
+          "description": "",
+          "tags": [
+            "UpdateStudent"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {},
+              "required": true
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "user_Id": {
+                      "type": "number"
+                    },
+                    "StudentName": {
+                      "type": "string"
+                    },
+                    "StudentRegno": {
+                      "type": "number"
+                    },
+                    "StudentDept": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        },
+        "delete": {
+          "summary": "Delete Student Details by Id",
+          "description": "",
+          "tags": [
+            "GetStudent"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "schema": {},
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "400": {
+              "description": "Invalid"
+            },
+            "404": {
+              "description": "Method Not Found"
+            },
+            "502": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "bearerAuth": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "bearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      },
+      "requestBodies": {},
+      "schemas": {
+        "User": {
+          "properties": {
+            "user_Id": {
+              "type": "number"
+            },
+            "StudentName": {
+              "type": "string"
+            },
+            "StudentDept": {
+              "type": "string"
+            },
+            "Email": {
+              "type": "string"
+            },
+            "Password": {
+              "type": "string"
+            },
+            "Token": {
+              "type": "string"
+            }
+          }
+        },
+        "Student": {
+          "properties": {
+            "user_Id": {
+              "type": "number"
+            },
+            "StudentName": {
+              "type": "string"
+            },
+            "StudentRegno": {
+              "type": "number"
+            },
+            "StudentDept": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }

@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
 const studentsRouter = require('./routes/students')
-app.use('/students', studentsRouter)
+app.use('/student', studentsRouter)
 app.get('/students', studentsRouter)
 app.use('/login', studentsRouter)
 app.use('/signup', studentsRouter)
