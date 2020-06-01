@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 var secret = require('../constant/secret-constant')
 
 module.exports.generateToken = (email) => {
+    console.log("I am in generate token",email);
     const token = jwt.sign({ email },
       'xposure-secret-key',
       {
@@ -32,11 +33,13 @@ exports.login = (req, res, callback) => {
     // Validate request parameters, queries using express-validator
     console.log("requesst",req);
     // let userId = req.body.userId;
-    userService.getUser(req.body, (err,response) => {
+    userService.getUser(req.body, (response,err) => {
         if (err) {
             callback(serializer.error(err));
+            console.log("eroorincontroler",err)
         }
         else{
+            console.log("reaponse",res);
             callback(res.json(serializer.success(response)))
         }
     });
@@ -50,8 +53,10 @@ exports.signup = (req, res, callback) => {
     userService.saveUser(req.body, (err,response) => {
         if (err) {
             callback(serializer.error(err));
+            console.log("eroorincontroler",err)
         }
         else{
+            console.log("reaponse",res);
             callback(res.json(serializer.success(response)))
         }
     });

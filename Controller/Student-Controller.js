@@ -2,27 +2,29 @@ var createStudent1 = require('../Service/studentService');
 var validate = require('../Controller/User-Controller');
 var serializer = require('../utils/response-statuscode');
 var logger = require("../config/winston-config-file");
-var UNAUTHORIZED = require('../constant/authorization-constant');    
+var UNAUTHORIZED = require('../constant/authorization-constant');
 
 exports.createStudents = (req, res, callback) => {
     // Validate request parameters, queries using express-validator
+    console.log("requesttttt", req.headers.authorization);
     logger.info("I am in create student controleer")
     if (req.headers.authorization && validate.validateToken(req.headers.authorization)) {
-    let student = req.body;
-    createStudent1.createStudent(student, (res,err) => {
-        if (err) {
-            logger.debug("error while creating student")
-            callback(serializer.error(err));
-        }
-        else{
-            logger.info("Return success response",response, { "sucess": true })
-            callback(res.json(serializer.success(response)))
-        }
-    });
-}
-else {
-    callback(res.status(403).json(serializer.unAuthorized(UNAUTHORIZED)));
-}
+        let student = req.body;
+        createStudent1.createStudent(student, (response, err) => {
+            if (err) {
+                logger.debug("error while creating student")
+                callback(serializer.error(err));
+            }
+            else {
+                logger.info("Return success response",response, { "sucess": true })
+                callback(res.json(serializer.success(response)))
+            }
+        });
+    }
+    else {
+        callback(res.status(403).json(serializer.unAuthorized(UNAUTHORIZED)));
+        console.log("seriliazer", serializer.unAuthorized('Unauthorized'))
+    }
 }
 
 exports.getStudents = (req, res, callback) => {
@@ -105,4 +107,5 @@ exports.deleteStudent = (req, res, callback) => {
         callback(res.status(403).json(serializer.unAuthorized(UNAUTHORIZED)));
     }
 }
+
 
