@@ -41,6 +41,3 @@ userSchema.index({Email: 1}, {unique: true});
 userSchema.index({Password: 1}, {unique: true});
 // create model if not exists.
 module.exports = mongoose.model('User',userSchema);
-
-
- 
