@@ -153,4 +153,3 @@ module.exports.updateStudentById = updateStudentById;
 module.exports.deleteStudentById = deleteStudentById;
 module.exports.getUser = getUser;
 module.exports.saveUser = saveUser;
-
