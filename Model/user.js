@@ -2,7 +2,7 @@
 var mongoose    =   require("mongoose");
 var Joi = require('@hapi/joi');
 // const userSchema =   new mongoose.Schema({
-    
+ 
 //     "user_Id" : Number,
 //     "StudentName" : String,
 //     "StudentDept" : String,
@@ -41,5 +41,6 @@ userSchema.index({Email: 1}, {unique: true});
 userSchema.index({Password: 1}, {unique: true});
 // create model if not exists.
 module.exports = mongoose.model('User',userSchema);
+
 
  
